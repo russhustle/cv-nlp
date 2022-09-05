@@ -1,0 +1,6 @@
+data:
+  sample_url: 'http://images.cocodataset.org/val2017/000000039769.jpg'
+feature_extractor: "facebook/detr-resnet-50"
+model: "facebook/detr-resnet-50"
+keep_threshold: 0.9
+
