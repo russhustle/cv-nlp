@@ -1,27 +1,26 @@
 import matplotlib.pyplot as plt
 
-COLORS = [
-    [0.000, 0.447, 0.741],
-    [0.850, 0.325, 0.098],
-    [0.929, 0.694, 0.125],
-    [0.494, 0.184, 0.556],
-    [0.466, 0.674, 0.188],
-    [0.301, 0.745, 0.933],
-]
-
 
 def plot_results(pil_img, model, prob, boxes):
     """Plot  the results from object detection inference."""
     plt.figure(figsize=(16, 10))
     plt.imshow(pil_img)
     ax = plt.gca()
+    COLORS = [
+        [0.000, 0.447, 0.741],
+        [0.850, 0.325, 0.098],
+        [0.929, 0.694, 0.125],
+        [0.494, 0.184, 0.556],
+        [0.466, 0.674, 0.188],
+        [0.301, 0.745, 0.933],
+    ]
     colors = COLORS * 100
     for p, (xmin, ymin, xmax, ymax), c in zip(prob, boxes.tolist(), colors):
         ax.add_patch(
             plt.Rectangle(
-                (xmin, ymin),
-                xmax - xmin,
-                ymax - ymin,
+                xy=(xmin, ymin),
+                width=xmax - xmin,
+                height=ymax - ymin,
                 fill=False,
                 color=c,
                 linewidth=3,
